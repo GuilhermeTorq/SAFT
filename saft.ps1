@@ -92,5 +92,16 @@ $script = "& `"C:\Program Files\Java\jre1.8.0_341\bin\java`" -jar `"$jarFile`" -
 # Cleans the password from being 'visible'
 [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($BSTR)
 
-Invoke-Expression $script
-Write-Host "`nScript executado: $script"
+Write-Host "`nScript para executar: $script"
+
+$option = Read-Host -Prompt "`nContinuar e executar? (y/n)"
+if($option -eq "y" -OR $option -eq "Y")
+{
+    Invoke-Expression $script
+    Write-host "`nO script foi executado"
+}else
+{
+    Write-host "`nO script foi cancelado"
+}
+
+Write-Host "`nScript Terminado..."
